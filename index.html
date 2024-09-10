@@ -10,9 +10,9 @@
   <body>
     <!-- <model-viewer> HTML element -->
     <model-viewer id="hotspot-camera-view-demo" src="ponte_nova_lm600_corona_v01.glb" loading="eager" auto-rotate ar ar-modes="scene-viewer webxr quick-look" camera-controls tone-mapping="neutral" poster="ponte_nova_lm600_corona_v01_Corona Camera001_.jpg" shadow-intensity="1.12" environment-image="autumn_field_8k.hdr" field-of-view="45deg" min-field-of-view="5deg" max-field-of-view="45deg" max-camera-orbit="auto 100deg auto">
-      <button class="Hotspot" slot="hotspot-1" data-position="-10.019337805061532m 9.631190359240472m -9.526141403885422m" data-normal="4.0338606586514996e-8m 9.660761496709627e-8m -0.9999999999999946m" data-visibility-attribute="visible" data-orbit="-132.4deg 72.94deg 228.1m" data-target="-4m 2m -3m">
+      <button class="Hotspot" slot="hotspot-1" data-position="-10.019337805061532m 9.631190359240472m -9.526141403885422m" data-normal="4.0338606586514996e-8m 9.660761496709627e-8m -0.9999999999999946m" data-visibility-attribute="visible" data-orbit="-132.4deg 72.94deg 228.1m" data-target="-4m 2m -3m" data-field="5deg">
           <div class="HotspotAnnotation">Turbina</div>
-      </button><button class="Hotspot" slot="hotspot-2" data-position="-9.395268261747592m 3.951350428977295m -16.107331565069813m" data-normal="-3.911526800367067e-7m -5.339671819364758e-7m -0.999999999999781m" data-visibility-attribute="visible" data-target="-0.1879433m 0.1157161m -0.01563221m">
+      </button><button class="Hotspot" slot="hotspot-2" data-position="-9.395268261747592m 3.951350428977295m -16.107331565069813m" data-normal="-3.911526800367067e-7m -5.339671819364758e-7m -0.999999999999781m" data-visibility-attribute="visible" data-target="-0.1879433m 0.1157161m -0.01563221m" data-field="10deg">
           <div class="HotspotAnnotation">Transformador</div>
       </button>
       <div class="progress-bar hide" slot="progress-bar">
@@ -26,7 +26,7 @@
       </div>
     </model-viewer>  
     <script src="script.js"></script>
-    <!-- Loads <model-viewer> for browsers: -->
+    <!-- Loads <model-viewer> for browsers: modelViewer2.fieldOfView = '5deg'; -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <script type="module">
   const modelViewer2 = document.querySelector("#hotspot-camera-view-demo");
@@ -34,7 +34,7 @@
     let dataset = annotation.dataset;
     modelViewer2.cameraTarget = dataset.target;
     modelViewer2.cameraOrbit = dataset.orbit;
-    modelViewer2.fieldOfView = '5deg';
+    modelViewer2.fieldOfView = dataset.field;
   }
 
   modelViewer2.querySelectorAll('button').forEach((hotspot) => {
